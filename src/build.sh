@@ -66,11 +66,11 @@ sudo ldconfig
 
 
 
-echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
-echo -e "${On_Gre} Python Package Assembly Omitted ${RCol}"
-echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
+# echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
+# echo -e "${On_Gre} Python Package Assembly Omitted ${RCol}"
+# echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
 # Change to the python directory
-# cd ../python
+cd ../python
 
 # # everything is functioning up to here, but then the python package build fails
 # # possibly build it in conda then install it outside of conda?
@@ -85,25 +85,27 @@ echo -e "${Gre} ----------------------------------------------------------------
 # # Activate the conda environment
 # source activate py_3.9
 
-# echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
-# echo -e "${On_Gre} 6. Installing Python Requirements${RCol}"
-# echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
+echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
+echo -e "${On_Gre} 6. Installing Python Requirements${RCol}"
+echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
 # # Install Python dependencies
-# pip install wheel==0.43.0 setuptools==69.5.1 pybind11==2.11.1
+#pip install wheel==0.43.0 setuptools==69.5.1 pybind11==2.11.1
+pip install -r install_requirements.txt
 
-# echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
-# echo -e "${On_Gre} 7. Creating Wheel File${RCol}"
-# echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
+echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
+echo -e "${On_Gre} 7. Creating Wheel File${RCol}"
+echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
 
 # # Build the Python wheel
-# python setup.py bdist_wheel
+export CTRANSLATE2_ROOT=/usr/local
+python setup.py bdist_wheel
 
-# echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
-# echo -e "${On_Gre} 8. Installing Wheel File.${RCol}"
-# echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
+echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
+echo -e "${On_Gre} 8. Installing Wheel File.${RCol}"
+echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
 
 # # Install the built wheel
-# pip install dist/*.whl --no-deps
+pip install dist/*.whl --no-deps
 
 # Update the library path
 # echo -e "$\n{Gre} -----------------------------------------------------------------${RCol}"
@@ -126,9 +128,9 @@ echo -e "${Gre} ----------------------------------------------------------------
 # echo -e "${Gre} -----------------------------------------------------------------${RCol}"
 
 
-echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
-echo -e "${On_Gre} FINAL. Installing Wheel File.${RCol}"
-echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
+# echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
+# echo -e "${On_Gre} FINAL. Installing Wheel File.${RCol}"
+# echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
 
 # Install the built wheel
-pip install /src/*.whl
+# pip install /src/*.whl

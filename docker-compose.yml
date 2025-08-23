@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   whisper:
     container_name: faster-whisper-rocm
@@ -7,12 +5,19 @@ services:
     build:
       context: .
     image: wyoming-faster-whisper-rocm
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    ipc: host
+    shm_size: 8G
     volumes:
+      - /usr/lib/wsl/lib/libdxcore.so:/usr/lib/libdxcore.so
+      - /opt/rocm/lib/libhsa-runtime64.so.1:/opt/rocm/lib/libhsa-runtime64.so.1
       - ./data:/data
     ports:
       - "10300:10300"
     devices:
-      - "/dev/dri"
-      - "/dev/kfd"
-    environment:
-      - HSA_OVERRIDE_GFX_VERSION=9.0.0
+      - "/dev/dxg:/dev/dxg"
+#    environment:
+#      - HSA_OVERRIDE_GFX_VERSION=9.0.0
