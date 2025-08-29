@@ -39,7 +39,7 @@ echo -e "${On_Gre} 2.  Running CMake with Architecture Spec'd${RCol}"
 echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
 
 # Run cmake with specified options
-CLANG_CMAKE_CXX_COMPILER=clang++ CXX=clang++ HIPCXX="$(hipconfig -l)/clang" HIP_PATH="$(hipconfig -R)" \
+CLANG_CMAKE_CXX_COMPILER="$(hipconfig -l)/clang++" CXX="$(hipconfig -l)/clang++" HIPCXX="$(hipconfig -l)/clang" HIP_PATH="$(hipconfig -R)" \
 cmake -S . -B build -DWITH_MKL=OFF -DWITH_HIP=ON -DCMAKE_HIP_ARCHITECTURES=$PYTORCH_ROCM_ARCH -DBUILD_TESTS=ON -DWITH_CUDNN=ON
 
 # Build the project with 16 parallel jobs
@@ -98,7 +98,7 @@ echo -e "${Gre} ----------------------------------------------------------------
 
 # # Build the Python wheel
 export CTRANSLATE2_ROOT=/usr/local
-python setup.py bdist_wheel
+python3 setup.py bdist_wheel
 
 echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
 echo -e "${On_Gre} 8. Installing Wheel File.${RCol}"
