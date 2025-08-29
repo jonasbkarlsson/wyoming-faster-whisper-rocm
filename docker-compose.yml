@@ -12,12 +12,11 @@ services:
     ipc: host
     shm_size: 8G
     volumes:
-      - /usr/lib/wsl/lib/libdxcore.so:/usr/lib/libdxcore.so
-      - /opt/rocm/lib/libhsa-runtime64.so.1:/opt/rocm/lib/libhsa-runtime64.so.1
       - ./data:/data
     ports:
       - "10300:10300"
     devices:
-      - "/dev/dxg:/dev/dxg"
+      - "/dev/dri:/dev/dri"
+      - "/dev/kfd:/dev/kfd"
 #    environment:
 #      - HSA_OVERRIDE_GFX_VERSION=9.0.0
