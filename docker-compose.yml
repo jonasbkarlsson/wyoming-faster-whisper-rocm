@@ -1,6 +1,6 @@
 services:
   whisper:
-    container_name: faster-whisper-rocm
+    container_name: faster-whisper
     restart: unless-stopped
     build:
       context: .
