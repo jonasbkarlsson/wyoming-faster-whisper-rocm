@@ -164,4 +164,3 @@ cython_debug/
 # Project Specific Exclusions
 
 /data
-amdgpu*.deb
