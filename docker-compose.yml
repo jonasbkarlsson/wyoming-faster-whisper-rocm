@@ -6,7 +6,7 @@ services:
       context: .
       args:
         - GFX=gfx1101
-        - WHISPER_MODEL=large-v3
+        - WHISPER_MODEL=distil-small.en
     image: wyoming-faster-whisper-rocm
     cap_add:
       - SYS_PTRACE
