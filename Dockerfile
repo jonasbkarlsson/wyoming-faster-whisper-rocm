@@ -3,6 +3,7 @@ FROM rocm/dev-ubuntu-22.04:6.4.2-complete
 
 ARG GFX
 ARG WHISPER_MODEL
+ENV PYTORCH_ROCM_ARCH=${GFX}
 ENV WHISPER_MODEL=${WHISPER_MODEL}
 
 RUN pip install -U pip && pip install wyoming==1.7.2 faster-whisper==1.2.0 tokenizers==0.21.*
@@ -13,9 +14,6 @@ WORKDIR /src
 RUN chmod +x *.sh
 
 RUN git clone https://github.com/arlo-phoenix/CTranslate2-rocm.git --recurse-submodules
-
-ENV PYTORCH_ROCM_ARCH=${GFX}
-# gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942;gfx1200;gfx1201
 RUN ./build.sh
 
 ENTRYPOINT ["sh", "-c", "/src/run.sh --model ${WHISPER_MODEL}"]
