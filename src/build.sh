@@ -66,14 +66,11 @@ sudo ldconfig
 
 
 
-# echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
-# echo -e "${On_Gre} Python Package Assembly Omitted ${RCol}"
-# echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
+echo -e "\n${Gre} -----------------------------------------------------------------${RCol}"
+echo -e "${On_Gre} 5. Python Package Assembly ${RCol}"
+echo -e "${Gre} -----------------------------------------------------------------${RCol}\n"
 # Change to the python directory
 cd ../python
-
-# # everything is functioning up to here, but then the python package build fails
-# # possibly build it in conda then install it outside of conda?
 
 # echo -e "${Gre} -----------------------------------------------------------------${RCol}"
 # echo -e "${On_Gre} 5. Setting Up Conda Environment.${RCol}"
