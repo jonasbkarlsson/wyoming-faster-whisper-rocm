@@ -1,9 +1,12 @@
 services:
   whisper:
-    container_name: faster-whisper
+    container_name: faster-whisper-rocm
     restart: unless-stopped
     build:
       context: .
+      args:
+        - GFX=gfx1101
+        - WHISPER_MODEL=large-v3
     image: wyoming-faster-whisper-rocm
     cap_add:
       - SYS_PTRACE
@@ -16,7 +19,7 @@ services:
     ports:
       - "10300:10300"
     devices:
-      - "/dev/dri:/dev/dri"
-      - "/dev/kfd:/dev/kfd"
+      - "/dev/dri"
+      - "/dev/kfd"
 #    environment:
 #      - HSA_OVERRIDE_GFX_VERSION=9.0.0
